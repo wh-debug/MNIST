@@ -42,17 +42,8 @@ network.load_state_dict(torch.load('model_Fc.pkl'))
 # network = DeepConvNet()
 # network.load_params("deep_convnet_params.pkl")
 
-def softmax1(x):
-    if x.ndim == 2:
-        x = x.T
-        x = x - np.max(x, axis=0)
-        y = np.exp(x) / np.sum(np.exp(x), axis=0)
-        return y.T 
 
-    x = x - np.max(x) # 溢出对策
-    return np.exp(x) / np.sum(np.exp(x))
-
-class MainWindow(QMainWindow,Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
     
